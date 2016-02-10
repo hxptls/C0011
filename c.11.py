@@ -112,14 +112,19 @@ print('[OK]')
 # print('TEST END')
 
 # PRINT OUT #
-DATA_VERSION = 0
+DATA_VERSION = 1
 printl('Writing file...')
 file = open(STORE_FILE_NAME, mode='w')
 print('# This is c.11, a part if C0011 by Hexapetalous.', file=file)
 print('# Data version = %d' % DATA_VERSION, file=file)
 print('# Copyright 2016 Hexapetalous. All rights reserved.', file=file)
+print('ROOT %s' % ROOT_URL, file=file)
+print('TITL %s' % data['title'], file=file)
+child_id = 0
 for child in child_list:
+    print('ID   %d' % child_id, file=file)
     print('NAME %s' % child['name'], 'HREF %s' % (child['href']), sep='\n',
           file=file)
+    child_id += 1
 print('END', file=file)
 print('[OK]')
