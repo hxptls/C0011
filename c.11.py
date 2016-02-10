@@ -63,12 +63,12 @@ for floor in root_info:
         if content.find('专项') != -1:
             href = p9b.get_a(content)
             if href == '':
-                print('ERROR There is a comment which contains \'专项\' but no '
+                print('WARN There is a comment which contains \'专项\' but no '
                       'link.')
                 print('\tROOT_URL %s' % ROOT_URL)
                 print('\tFLOOR %d' % floor['floor'].floor_index)
                 print('\tRAW COMMENT %s' % content)
-                print('\tERROR END')
+                print('\tWARN END')
                 continue
             floor_content = floor['floor'].content
             floor_content_list = floor_content.splitlines()
@@ -91,19 +91,21 @@ for floor in root_info:
                     found = True
                     break
             if not found:
-                print('ERROR There is a good comment but there is no name of '
+                print('WARN There is a good comment but there is no name of '
                       'the works.')
                 print('\tROOT_URL %s' % ROOT_URL)
                 print('\tFLOOR %d' % floor['floor'].floor_index)
                 print('\tRAW FLOOR (follow lines)')
                 print(floor_content)
-                print('\tERROR END')
+                print('\tWARN END')
                 print('\tINFO This may be caused by a wrong prefix. If it is '
-                      'so, add it to the control flow started from line #72.')
+                      'so, add it to the control flow started from line #77.')
             break
         if found:
             break
 
+print('Total analyzed %d floors.' % test_count)
+printl('INFO There maybe some warns, please check for them manually.')
 print('[OK]')
 # TEST
 # print('This is test...TEST START')
